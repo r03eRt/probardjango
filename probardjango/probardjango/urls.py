@@ -19,4 +19,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # Anadimos la
+    url(r'^$', 'boletin.views.inicio', name='inicio'),
 ]
