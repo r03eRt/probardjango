@@ -14,6 +14,7 @@ class RegistradoForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data.get("email")
         if not "gmail" in email:
+            # Error en este campo de modelo
             raise forms.ValidationError("Por favor usa un email gmail")
 
         return email
