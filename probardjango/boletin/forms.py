@@ -16,7 +16,7 @@ class RegistradoForm(forms.ModelForm):
         # Controlamos error en la extension solo
         email_base, proveedor = email.split("@")
         dominio, extension = proveedor.split(".")
-        if not extension == "gmail":
+        if not dominio == "gmail":
             raise forms.ValidationError("No es un correo con extension gmail")
 
         return email
