@@ -12,5 +12,8 @@ class RegistradoForm(forms.ModelForm):
 
     # Cuando se guardamos y seguimos para anadir otro ponemos ese valor en el formulario
     def clean_email(self):
-        print self.cleaned_data
-        return "abc@mail.com"
+        email = self.cleaned_data.get("email")
+        if not "gmail" in email:
+            raise forms.ValidationError("Por favor usa un email gmail")
+
+        return email
