@@ -10,6 +10,7 @@ class RegistradoForm(forms.ModelForm):
         # Campos del modelo que queremos utilizar
         fields = ["nombre", "email", "codigo_postal"]
 
+    # Cuando se guardamos y seguimos para anadir otro ponemos ese valor en el formulario
     def clean_email(self):
         print self.cleaned_data
         return "abc@mail.com"
