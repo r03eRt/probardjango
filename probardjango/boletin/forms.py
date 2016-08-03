@@ -13,8 +13,10 @@ class RegistradoForm(forms.ModelForm):
     # Cuando se guardamos y seguimos para anadir otro ponemos ese valor en el formulario
     def clean_email(self):
         email = self.cleaned_data.get("email")
-        if not "gmail" in email:
-            # Error en este campo de modelo
-            raise forms.ValidationError("Por favor usa un email gmail")
+        # Controlamos error en la extension solo
+        email_base, proveedor = email.split("@")
+        dominio, extension = proveedor.split(".")
+        if not extension == "gmail":
+            raise forms.ValidationError("No es un correo con extension gmail")
 
         return email
